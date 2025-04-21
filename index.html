@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wedding Invitation</title>
+  <style>
+    /* reset */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html, body { background:#fff; }
+
+    /* stack images with no gap */
+    .page {
+      background: #fff;
+    }
+    .page img {
+      display: block;
+      width: 100vw;
+      height: auto;
+      margin: 0;
+    }
+
+    .rsvp-form {
+    background: rgba(255, 255, 255, 0.9);
+    max-width: 400px;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 0 auto;
+  }
+.rsvp-form h1 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+.rsvp-form p.subtitle {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.options {
+  margin-bottom: 1.5rem;
+}
+.options input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.options label {
+  display: block;
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  user-select: none;
+}
+.options label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #333;
+  border-radius: 50%;
+}
+.options input[type="radio"]:checked + label::after {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 0.4rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #333;
+  border-radius: 50%;
+}
+
+.name-input {
+  margin-bottom: 1.5rem;
+}
+.name-input input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1.5rem;
+  color: #333;
+  border: 2px solid #333;
+  border-radius: 4px;
+  background: transparent;
+  outline: none;
+}
+.name-input input::placeholder {
+  color: #888;
+}
+
+.rsvp-form button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.5rem;
+  color: #fff;
+  background: #000;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.rsvp-form button:hover {
+  opacity: 0.8;
+}
+/* full‑page semi‑transparent gray overlay */
+#overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.4);
+  display: none;       /* hidden by default */
+  z-index: 10000;      /* on top of everything */
+}
+
+/* centered spinning circle */
+.spinner {
+  width: 48px; height: 48px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #333;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin 1s linear infinite;
+}
+
+/* keyframes for rotation */
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+  </style>
+</head>
+<body>
+  <div id="overlay">
+    <div class="spinner"></div>
+  </div>
+
+  <div class="page"><img src="1.png" alt=""></div>
+  <div class="page"><img src="2.png" alt=""></div>
+  <div class="page"><img src="3.jpg" alt=""></div>
+  <div class="page"><img src="4.jpg" alt=""></div>
+  <div class="page"><img src="5.png" alt=""></div>
+  <form class="rsvp-form" action="#" method="POST">
+    <h1>Тойға келесіз бе?</h1>
+    <p class="subtitle">Жұбыңызбен келетін болсаңыз, екі есімді де көрсетіңіз</p>
+
+    <div class="options">
+      <input type="radio" id="yes-alone" name="email" value="yes" />
+      <label for="yes-alone">Ия, келемін</label>
+
+      <input type="radio" id="yes-with" name="email" value="with" />
+      <label for="yes-with">Жолдасыммен келемін</label>
+
+      <input type="radio" id="no" name="email" value="no" />
+      <label for="no">Өкінішке орай келе алмаймын</label>
+    </div>
+
+    <div class="name-input">
+      <input
+        type="text"
+        name="name"
+        placeholder="Есіміңіз"
+        required
+      />
+    </div>
+
+    <button type="submit">Жіберу</button>
+  </form>
+  <p id="responseMessage" style="text-align:center; margin-top:1rem;"></p>
+
+  <!-- Link to external JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
